@@ -1,0 +1,151 @@
+/* ORA SHALEM — FUNNEL VISUAL SYSTEM
+   Shared stylesheet for the opt-in page + thank-you/offer page.
+   Palette pulled from the photographs. Two fonts only. No icons, no gradients, no glow. */
+
+:root{
+  /* --- colour, straight from the photos --- */
+  --ivory:      #FBF6EC;   /* warm ivory — page background      */
+  --ivory-deep: #F4ECDC;   /* second background, for alternating sections */
+  --espresso:   #3B342A;   /* body text                          */
+  --ink:        #4A4133;   /* softer body text                   */
+  --olive:      #5E6544;   /* subheads, accent rules             */
+  --terra:      #9A5B3B;   /* CTA buttons                        */
+  --terra-deep: #874E32;   /* button hover                       */
+  --gold:       #A98A54;   /* micro accents ONLY — hairlines     */
+  --muted:      #7A6E58;   /* fine print                         */
+  --line:       #E4D8C2;   /* hairlines                          */
+
+  /* --- two fonts, no more --- */
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --meta:"Segoe UI",Optima,Candara,"Gill Sans MT",system-ui,sans-serif;
+
+  --pad: clamp(60px, 8.5vw, 118px);   /* vertical breathing room */
+}
+
+*{ box-sizing:border-box; }
+html{ color-scheme:light; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--espresso);
+  font-family:var(--body);
+  font-size:19px;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- structure ---------- */
+section{ padding:var(--pad) 0; }
+.wide{ max-width:1180px; margin:0 auto; padding:0 clamp(22px,5vw,40px); }
+.mid{ max-width:960px; margin:0 auto; padding:0 clamp(22px,5vw,40px); }
+.narrow{ max-width:640px; margin:0 auto; padding:0 clamp(22px,5vw,40px); }
+.deep{ background:var(--ivory-deep); }
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(38px,5vw,74px);
+  align-items:center;
+}
+.split .copy{ max-width:30em; }
+
+/* ---------- type ---------- */
+h1,h2,h3{ font-family:var(--display); font-weight:600; }
+h1{
+  font-size:clamp(2.1rem,4.3vw,3.35rem);
+  line-height:1.09; letter-spacing:-.015em;
+  margin:.18em 0 .46em;
+}
+h2{
+  font-size:clamp(1.62rem,2.7vw,2.3rem);
+  line-height:1.18; letter-spacing:-.01em;
+  margin:0 0 .6em;
+}
+h3{
+  font-size:1.12rem; line-height:1.35;
+  margin:2em 0 .3em; color:var(--olive);
+}
+p{ margin:0 0 1.15em; }
+p:last-child{ margin-bottom:0; }
+em{ font-style:italic; }
+strong{ font-weight:600; }
+
+.eyebrow{
+  font-family:var(--meta); font-size:12px; font-weight:600;
+  letter-spacing:.19em; text-transform:uppercase;
+  color:var(--terra); margin:0 0 4px;
+}
+.lede{ font-size:1.14rem; color:var(--ink); }
+.center{ text-align:center; }
+.center .copy, .center p{ margin-left:auto; margin-right:auto; }
+
+/* the single permitted flourish: a thin gold rule */
+.rule{ width:56px; height:1px; background:var(--gold); border:0; margin:0 0 26px; }
+.center .rule, .rule.center-rule{ margin-left:auto; margin-right:auto; }
+
+blockquote{
+  margin:0; font-family:var(--display); font-style:italic;
+  font-size:clamp(1.42rem,2.5vw,1.92rem); line-height:1.42;
+  color:var(--ink); text-align:center;
+}
+blockquote .attrib{
+  display:block; font-style:normal; font-family:var(--meta);
+  font-size:12px; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--muted); margin-top:26px;
+}
+
+ul.marks{ list-style:none; padding:0; margin:1.3em 0; display:flex; flex-direction:column; gap:.85em; }
+ul.marks li{ position:relative; padding-left:1.5em; }
+ul.marks li::before{
+  content:""; position:absolute; left:0; top:.66em;
+  width:6px; height:6px; border-radius:50%; background:var(--terra);
+}
+
+/* ---------- images: large, warm, barely touched ---------- */
+.fig{ position:relative; margin:0; line-height:0; }
+.fig img{ width:100%; height:auto; display:block; border-radius:2px; }
+.fig::after{                       /* the 6% cream tint, nothing heavier */
+  content:""; position:absolute; inset:0; border-radius:2px;
+  background:var(--ivory); opacity:.06; pointer-events:none;
+}
+.fig--tall img{ aspect-ratio:4/5; object-fit:cover; object-position:center 22%; }
+
+/* ---------- CTA ---------- */
+.cta{
+  display:inline-block; font-family:var(--meta); font-weight:600;
+  font-size:1rem; letter-spacing:.01em;
+  background:var(--terra); color:var(--ivory);
+  text-decoration:none; padding:17px 34px; border-radius:6px;
+  border:0; cursor:pointer; transition:background .18s ease;
+}
+.cta:hover{ background:var(--terra-deep); }
+.cta-sub{ font-family:var(--meta); font-size:13px; color:var(--muted); margin:14px 0 0; }
+
+/* ---------- opt-in form ---------- */
+.form{ margin-top:30px; max-width:26em; }
+.form input{
+  width:100%; font-family:var(--meta); font-size:16px; color:var(--espresso);
+  background:#FFFDF7; border:1px solid var(--line); border-radius:6px;
+  padding:15px 16px; margin-bottom:12px;
+}
+.form input::placeholder{ color:#A2977F; }
+.form input:focus{ outline:2px solid var(--olive); outline-offset:1px; }
+.form .cta{ width:100%; }
+
+/* ---------- footer ---------- */
+footer{
+  font-family:var(--meta); font-size:12.5px; line-height:1.75;
+  color:var(--muted); text-align:center;
+  padding:42px 24px 56px; border-top:1px solid var(--line);
+}
+
+/* ---------- mobile: text first, image underneath ---------- */
+@media (max-width:820px){
+  body{ font-size:18px; }
+  .split{ grid-template-columns:1fr; gap:36px; }
+  .split .fig{ order:2; }
+  .split .copy{ order:1; max-width:none; }
+  .split.img-first .fig{ order:1; }
+  .split.img-first .copy{ order:2; }
+}
